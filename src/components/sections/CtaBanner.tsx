@@ -14,21 +14,21 @@ export function CtaBanner() {
   }
 
   return (
-    <section className="relative overflow-hidden border-b border-white/5 bg-ink-900/40 py-16">
+    <section className="relative overflow-hidden border-b border-ink-950/8 bg-white py-16">
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange/10 blur-3xl"
         aria-hidden="true"
       />
       <Container className="relative flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
         <Reveal className="flex items-center gap-5">
-          <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/5">
-            <Zap className="h-8 w-8 text-gold" aria-hidden="true" />
+          <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-orange/30 bg-orange/5">
+            <Zap className="h-8 w-8 text-orange-dark" aria-hidden="true" />
           </span>
           <div>
             <h2 className="max-w-md text-2xl font-bold sm:text-3xl">
-              Pronto para levar sua energia para o <span className="text-gold">próximo nível?</span>
+              Pronto para levar sua energia para o <span className="text-orange-dark">próximo nível?</span>
             </h2>
-            <p className="mt-2 max-w-md text-sm text-white/50">
+            <p className="mt-2 max-w-md text-sm text-ink-950/60">
               Fale agora com um de nossos especialistas pelo WhatsApp e receba atendimento imediato!
             </p>
           </div>

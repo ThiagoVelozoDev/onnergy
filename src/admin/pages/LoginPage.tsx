@@ -44,13 +44,13 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-ink-950 px-4">
+    <div className="flex min-h-screen items-center justify-center bg-paper px-4">
       <Card className="w-full max-w-sm p-8">
         <div className="flex justify-center">
-          <Logo />
+          <Logo surface="light" />
         </div>
-        <h1 className="mt-6 text-center text-lg font-bold text-paper">Acesso administrativo</h1>
-        <p className="mt-1 text-center text-xs text-white/50">Entre com suas credenciais para continuar.</p>
+        <h1 className="mt-6 text-center text-lg font-bold text-ink-950">Acesso administrativo</h1>
+        <p className="mt-1 text-center text-xs text-ink-950/60">Entre com suas credenciais para continuar.</p>
 
         <form className="mt-6 flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
           <Input
@@ -70,7 +70,7 @@ export default function LoginPage() {
             required
           />
 
-          {error && <p className="text-xs text-red-400">{error}</p>}
+          {error && <p className="text-xs text-red-600">{error}</p>}
 
           <Button type="submit" size="lg" className="mt-2 w-full" disabled={submitting}>
             <LogIn className="h-4 w-4" aria-hidden="true" />

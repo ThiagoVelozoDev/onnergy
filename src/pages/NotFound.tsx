@@ -7,9 +7,9 @@ export default function NotFound() {
 
   return (
     <Container className="flex flex-col items-center justify-center gap-4 py-32 text-center">
-      <span className="text-sm font-semibold uppercase tracking-widest text-gold">404</span>
+      <span className="text-sm font-semibold uppercase tracking-widest text-orange-dark">404</span>
       <h1 className="text-3xl font-bold">Página não encontrada</h1>
-      <p className="max-w-md text-sm text-white/50">
+      <p className="max-w-md text-sm text-ink-950/60">
         O conteúdo que você procura não existe ou foi movido.
       </p>
       <ButtonLink to="/" className="mt-4">

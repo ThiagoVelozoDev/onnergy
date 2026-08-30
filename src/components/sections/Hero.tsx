@@ -2,10 +2,10 @@ import type { ReactNode } from "react";
 import { DollarSign, Home, Leaf, Lock, MessageCircle, ShieldCheck, Sun } from "lucide-react";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { HeroPhotoCarousel } from "@/components/sections/HeroPhotoCarousel";
 import { useHero } from "@/hooks/useHero";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { generateWhatsAppMessage, openWhatsApp } from "@/services/whatsappService";
-import heroPhoto from "@/assets/placa-solar00.jpeg";
 
 const FEATURES = [
   { icon: DollarSign, title: "Economia", description: "Reduza sua conta de luz em até 95%" },
@@ -29,17 +29,17 @@ function highlightKeywords(text: string): ReactNode {
   return (
     <>
       {before}
-      <span className="text-gold">{match[0]}</span>
+      <span className="text-orange">{match[0]}</span>
       {highlightKeywords(after)}
     </>
   );
 }
 
 // Fade confinado à coluna da imagem: começa em preto sólido idêntico ao
-// fundo da seção (sem costura na borda da coluna) e dissolve gradualmente
-// até revelar a foto por completo antes da borda direita.
+// fundo da seção (sem costura na borda da coluna) e dissolve rapidamente,
+// puxado para a esquerda, para revelar a foto o quanto antes.
 const IMAGE_FADE_GRADIENT =
-  "linear-gradient(to right, #080808 0%, #080808 8%, rgba(8,8,8,0.85) 18%, rgba(8,8,8,0.6) 28%, rgba(8,8,8,0.35) 38%, rgba(8,8,8,0.15) 50%, rgba(8,8,8,0.04) 62%, rgba(8,8,8,0) 72%)";
+  "linear-gradient(to right, #080808 0%, #080808 5%, rgba(8,8,8,0.85) 11%, rgba(8,8,8,0.6) 18%, rgba(8,8,8,0.35) 25%, rgba(8,8,8,0.15) 33%, rgba(8,8,8,0.04) 40%, rgba(8,8,8,0) 48%)";
 
 export function Hero() {
   const { hero } = useHero();
@@ -57,13 +57,17 @@ export function Hero() {
           {hero.badge && (
             <Reveal
               as="span"
-              className="inline-flex w-fit rounded-full border border-gold/30 bg-gold/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-gold"
+              className="inline-flex w-fit rounded-full border border-orange/30 bg-orange/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-orange"
             >
               {hero.badge}
             </Reveal>
           )}
 
-          <Reveal as="h1" delay={80} className="mt-6 max-w-xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          <Reveal
+            as="h1"
+            delay={80}
+            className="mt-6 max-w-xl text-4xl font-extrabold leading-tight tracking-tight text-paper sm:text-5xl"
+          >
             {highlightKeywords(hero.title)}
           </Reveal>
 
@@ -76,8 +80,8 @@ export function Hero() {
           <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4">
             {FEATURES.map((feature, index) => (
               <Reveal key={feature.title} delay={240 + index * 80} className="flex items-start gap-2.5">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/5">
-                  <feature.icon className="h-4 w-4 text-gold" aria-hidden="true" />
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-orange/30 bg-orange/5">
+                  <feature.icon className="h-4 w-4 text-orange" aria-hidden="true" />
                 </span>
                 <div>
                   <p className="text-sm font-bold text-paper">{feature.title}</p>
@@ -108,10 +112,9 @@ export function Hero() {
         </div>
 
         <Reveal as="div" variant="fade" delay={200} className="relative min-h-[360px] lg:min-h-0">
-          <img
-            src={heroPhoto}
+          <HeroPhotoCarousel
             alt="Equipe ONNERGY instalando painéis solares"
-            className="absolute inset-0 h-full w-full object-cover object-[65%_center] sm:object-[70%_center] lg:object-[55%_center]"
+            className="object-[65%_center] sm:object-[70%_center] lg:object-[55%_center]"
           />
 
           {/* Mobile/tablet: funde o topo da foto com o preto do conteúdo acima dela. */}
@@ -134,8 +137,8 @@ export function Hero() {
             delay={500}
             className="absolute inset-x-4 bottom-4 flex items-start gap-3 rounded-xl border border-white/10 bg-ink-950/90 p-4 backdrop-blur sm:inset-x-auto sm:bottom-6 sm:right-6 sm:max-w-xs lg:bottom-24"
           >
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gold/10">
-              <Sun className="h-5 w-5 text-gold" aria-hidden="true" />
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-orange/10">
+              <Sun className="h-5 w-5 text-orange" aria-hidden="true" />
             </span>
             <div>
               <p className="text-sm font-bold text-paper">Projetos personalizados para sua realidade</p>

@@ -8,7 +8,7 @@ export function AdminLayout() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-ink-950 text-paper">
+    <div className="flex min-h-screen bg-paper text-ink-950">
       <aside className="hidden w-64 shrink-0 lg:block">
         <div className="fixed h-screen w-64">
           <AdminSidebar />

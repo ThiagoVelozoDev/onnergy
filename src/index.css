@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html,
 body {
-  @apply bg-ink-950 text-paper;
+  @apply bg-paper text-ink-950;
 }
 
 body {
@@ -16,5 +16,5 @@ body {
 }
 
 ::selection {
-  @apply bg-gold/30 text-paper;
+  @apply bg-orange/30 text-ink-950;
 }

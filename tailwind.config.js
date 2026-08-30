@@ -10,16 +10,17 @@ export default {
           800: "#181818",
         },
         paper: "#F5F5F5",
-        gold: {
-          DEFAULT: "#F5B800",
-          light: "#FFC928",
+        orange: {
+          DEFAULT: "#F97316",
+          light: "#FB923C",
+          dark: "#C2410C",
         },
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        gold: "0 0 40px -10px rgba(245, 184, 0, 0.35)",
+        orange: "0 0 40px -10px rgba(249, 115, 22, 0.35)",
       },
     },
   },

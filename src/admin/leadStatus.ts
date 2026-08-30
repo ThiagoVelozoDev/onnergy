@@ -12,7 +12,7 @@ export const LEAD_STATUS_LABELS: Record<LeadStatus, string> = {
 export const LEAD_STATUS_VARIANTS: Record<LeadStatus, BadgeVariant> = {
   new: "warning",
   contacted: "neutral",
-  qualified: "gold",
+  qualified: "orange",
   converted: "success",
   lost: "danger",
 };

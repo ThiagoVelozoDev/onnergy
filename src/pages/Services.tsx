@@ -54,7 +54,7 @@ export default function Services() {
                     key={service.id}
                     as="article"
                     delay={Math.min(index, 6) * 80}
-                    className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-900/60 hover:-translate-y-1 hover:border-gold/40"
+                    className="flex flex-col overflow-hidden rounded-2xl border border-ink-950/10 bg-white/90 hover:-translate-y-1 hover:border-orange/40"
                   >
                     {service.image_url ? (
                       <img
@@ -64,13 +64,13 @@ export default function Services() {
                         loading="lazy"
                       />
                     ) : (
-                      <div className="flex h-40 w-full items-center justify-center bg-ink-800">
-                        <Icon className="h-10 w-10 text-gold" aria-hidden="true" />
+                      <div className="flex h-40 w-full items-center justify-center bg-ink-950/5">
+                        <Icon className="h-10 w-10 text-orange-dark" aria-hidden="true" />
                       </div>
                     )}
                     <div className="flex flex-1 flex-col p-6">
-                      <h2 className="text-lg font-bold text-paper">{service.title}</h2>
-                      <p className="mt-2 flex-1 text-sm text-white/50">{service.short_description}</p>
+                      <h2 className="text-lg font-bold text-ink-950">{service.title}</h2>
+                      <p className="mt-2 flex-1 text-sm text-ink-950/60">{service.short_description}</p>
                       <Button
                         variant="outline"
                         size="sm"

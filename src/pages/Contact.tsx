@@ -27,33 +27,33 @@ export default function Contact() {
           <LeadForm source="contato" />
 
           <Card className="p-6 sm:p-8">
-            <h2 className="text-lg font-bold text-paper">Informações de contato</h2>
-            <ul className="mt-6 space-y-5 text-sm text-white/60">
+            <h2 className="text-lg font-bold text-ink-950">Informações de contato</h2>
+            <ul className="mt-6 space-y-5 text-sm text-ink-950/70">
               <li className="flex items-start gap-3">
-                <MessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden="true" />
+                <MessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-orange-dark" aria-hidden="true" />
                 <div>
-                  <p className="font-semibold text-paper">WhatsApp</p>
+                  <p className="font-semibold text-ink-950">WhatsApp</p>
                   <p>{siteSettings.whatsapp}</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden="true" />
+                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-orange-dark" aria-hidden="true" />
                 <div>
-                  <p className="font-semibold text-paper">E-mail</p>
+                  <p className="font-semibold text-ink-950">E-mail</p>
                   <p>{siteSettings.email}</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden="true" />
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-orange-dark" aria-hidden="true" />
                 <div>
-                  <p className="font-semibold text-paper">Endereço</p>
+                  <p className="font-semibold text-ink-950">Endereço</p>
                   <p>{siteSettings.address}</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <Clock className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden="true" />
+                <Clock className="mt-0.5 h-5 w-5 shrink-0 text-orange-dark" aria-hidden="true" />
                 <div>
-                  <p className="font-semibold text-paper">Horário de atendimento</p>
+                  <p className="font-semibold text-ink-950">Horário de atendimento</p>
                   <p>{siteSettings.business_hours}</p>
                 </div>
               </li>

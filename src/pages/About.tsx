@@ -47,13 +47,13 @@ export default function About() {
               <Reveal
                 key={value.title}
                 delay={index * 100}
-                className="rounded-2xl border border-white/10 bg-ink-900/60 p-6 hover:-translate-y-1 hover:border-gold/40"
+                className="rounded-2xl border border-ink-950/10 bg-white/90 p-6 hover:-translate-y-1 hover:border-orange/40"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 bg-gold/5">
-                  <value.icon className="h-5 w-5 text-gold" aria-hidden="true" />
+                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-orange/30 bg-orange/5">
+                  <value.icon className="h-5 w-5 text-orange-dark" aria-hidden="true" />
                 </span>
-                <h2 className="mt-5 text-base font-bold text-paper">{value.title}</h2>
-                <p className="mt-2 text-sm text-white/50">{value.description}</p>
+                <h2 className="mt-5 text-base font-bold text-ink-950">{value.title}</h2>
+                <p className="mt-2 text-sm text-ink-950/60">{value.description}</p>
               </Reveal>
             ))}
           </div>

@@ -57,16 +57,16 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {metrics.map((metric) => (
-          <div key={metric.label} className="rounded-2xl border border-white/10 bg-ink-900/60 p-5">
-            <metric.icon className="h-5 w-5 text-gold" aria-hidden="true" />
-            <p className="mt-4 text-2xl font-extrabold text-paper">{metric.value}</p>
-            <p className="mt-1 text-xs text-white/50">{metric.label}</p>
+          <div key={metric.label} className="rounded-2xl border border-ink-950/10 bg-white/90 p-5">
+            <metric.icon className="h-5 w-5 text-orange-dark" aria-hidden="true" />
+            <p className="mt-4 text-2xl font-extrabold text-ink-950">{metric.value}</p>
+            <p className="mt-1 text-xs text-ink-950/60">{metric.label}</p>
           </div>
         ))}
       </div>
 
-      <div className="mt-8 rounded-2xl border border-white/10 bg-ink-900/60 p-6">
-        <h2 className="text-base font-bold text-paper">Últimos leads</h2>
+      <div className="mt-8 rounded-2xl border border-ink-950/10 bg-white/90 p-6">
+        <h2 className="text-base font-bold text-ink-950">Últimos leads</h2>
 
         {!leadsLoading && recentLeads.length === 0 && (
           <div className="mt-6">
@@ -82,7 +82,7 @@ export default function DashboardPage() {
           <div className="mt-4 overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-white/10 text-xs uppercase tracking-wide text-white/40">
+                <tr className="border-b border-ink-950/10 text-xs uppercase tracking-wide text-ink-950/50">
                   <th className="py-3 pr-4">Nome</th>
                   <th className="py-3 pr-4">Serviço</th>
                   <th className="py-3 pr-4">Data</th>
@@ -91,8 +91,8 @@ export default function DashboardPage() {
               </thead>
               <tbody>
                 {recentLeads.map((lead) => (
-                  <tr key={lead.id} className="border-b border-white/5 text-white/70">
-                    <td className="py-3 pr-4 font-medium text-paper">{lead.name}</td>
+                  <tr key={lead.id} className="border-b border-ink-950/8 text-ink-950/70">
+                    <td className="py-3 pr-4 font-medium text-ink-950">{lead.name}</td>
                     <td className="py-3 pr-4">{serviceTitle(lead.service_id)}</td>
                     <td className="py-3 pr-4">{formatDateTime(lead.created_at)}</td>
                     <td className="py-3 pr-4">

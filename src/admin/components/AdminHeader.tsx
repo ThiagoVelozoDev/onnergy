@@ -35,7 +35,7 @@ export function AdminHeader({ onOpenSidebar }: AdminHeaderProps) {
         <button
           type="button"
           onClick={handleSignOut}
-          className="flex items-center gap-2 rounded-md border border-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-white/70 hover:border-gold/40 hover:text-gold"
+          className="flex items-center gap-2 rounded-md border border-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-white/70 hover:border-orange/40 hover:text-orange"
         >
           <LogOut className="h-4 w-4" aria-hidden="true" />
           Sair

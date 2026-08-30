@@ -42,11 +42,11 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             role="status"
             className={cn(
               "pointer-events-auto flex w-full max-w-sm items-start gap-3 rounded-lg border bg-ink-900/95 px-4 py-3 shadow-lg backdrop-blur",
-              toast.variant === "success" ? "border-gold/40" : "border-red-500/40",
+              toast.variant === "success" ? "border-orange/40" : "border-red-500/40",
             )}
           >
             {toast.variant === "success" ? (
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden="true" />
+              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-orange" aria-hidden="true" />
             ) : (
               <XCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-400" aria-hidden="true" />
             )}

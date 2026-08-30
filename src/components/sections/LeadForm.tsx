@@ -93,8 +93,8 @@ export function LeadForm({ source = "site" }: LeadFormProps) {
 
   return (
     <Card className="w-full p-6 sm:p-8">
-      <h3 className="text-lg font-bold text-paper">
-        Solicite um <span className="text-gold">orçamento</span>
+      <h3 className="text-lg font-bold text-ink-950">
+        Solicite um <span className="text-orange-dark">orçamento</span>
         <br />
         ou mais informações
       </h3>
@@ -147,7 +147,7 @@ export function LeadForm({ source = "site" }: LeadFormProps) {
           {submitting ? "Enviando..." : "Quero Falar Agora"}
         </Button>
 
-        <p className="flex items-center justify-center gap-1.5 text-center text-xs text-white/40">
+        <p className="flex items-center justify-center gap-1.5 text-center text-xs text-ink-950/50">
           <Lock className="h-3 w-3" aria-hidden="true" />
           Seus dados estão seguros. Não enviamos spam.
         </p>

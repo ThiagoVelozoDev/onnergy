@@ -65,7 +65,7 @@ export function Footer() {
                   key={social.id}
                   href={social.url}
                   aria-label={social.platform}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/60 transition-colors hover:border-gold hover:text-gold"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/60 transition-colors hover:border-orange hover:text-orange"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </a>
@@ -80,7 +80,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5">
               {column.links.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="text-sm text-white/60 hover:text-gold">
+                  <Link to={link.href} className="text-sm text-white/60 hover:text-orange">
                     {link.label}
                   </Link>
                 </li>
@@ -93,19 +93,19 @@ export function Footer() {
           <h3 className="text-xs font-semibold uppercase tracking-wide text-white/40">Contato</h3>
           <ul className="mt-4 space-y-3 text-sm text-white/60">
             <li className="flex items-start gap-2">
-              <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
+              <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-orange" aria-hidden="true" />
               {siteSettings.whatsapp}
             </li>
             <li className="flex items-start gap-2">
-              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-orange" aria-hidden="true" />
               {siteSettings.email}
             </li>
             <li className="flex items-start gap-2">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-orange" aria-hidden="true" />
               {siteSettings.address}
             </li>
             <li className="flex items-start gap-2">
-              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
+              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-orange" aria-hidden="true" />
               {siteSettings.business_hours}
             </li>
           </ul>
@@ -116,10 +116,10 @@ export function Footer() {
         <Container className="flex flex-col items-center justify-between gap-3 text-xs text-white/40 sm:flex-row">
           <p>{footerSettings.copyright}</p>
           <div className="flex gap-6">
-            <Link to={footerSettings.privacy_url ?? "#"} className="hover:text-gold">
+            <Link to={footerSettings.privacy_url ?? "#"} className="hover:text-orange">
               Política de Privacidade
             </Link>
-            <Link to={footerSettings.terms_url ?? "#"} className="hover:text-gold">
+            <Link to={footerSettings.terms_url ?? "#"} className="hover:text-orange">
               Termos de Uso
             </Link>
           </div>

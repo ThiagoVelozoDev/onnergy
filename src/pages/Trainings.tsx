@@ -49,7 +49,7 @@ export default function Trainings() {
                   key={training.id}
                   as="article"
                   delay={Math.min(index, 6) * 80}
-                  className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-900/60 hover:-translate-y-1 hover:border-gold/40"
+                  className="flex flex-col overflow-hidden rounded-2xl border border-ink-950/10 bg-white/90 hover:-translate-y-1 hover:border-orange/40"
                 >
                   {training.image_url ? (
                     <img
@@ -59,29 +59,29 @@ export default function Trainings() {
                       loading="lazy"
                     />
                   ) : (
-                    <div className="flex h-40 w-full items-center justify-center bg-ink-800">
-                      <Users2 className="h-10 w-10 text-gold" aria-hidden="true" />
+                    <div className="flex h-40 w-full items-center justify-center bg-ink-950/5">
+                      <Users2 className="h-10 w-10 text-orange-dark" aria-hidden="true" />
                     </div>
                   )}
                   <div className="flex flex-1 flex-col p-6">
                     {training.target_audience && (
-                      <Badge variant="gold" className="mb-3 w-fit">
+                      <Badge variant="orange" className="mb-3 w-fit">
                         {training.target_audience}
                       </Badge>
                     )}
-                    <h2 className="text-lg font-bold text-paper">{training.title}</h2>
-                    <p className="mt-2 flex-1 text-sm text-white/50">{training.short_description}</p>
+                    <h2 className="text-lg font-bold text-ink-950">{training.title}</h2>
+                    <p className="mt-2 flex-1 text-sm text-ink-950/60">{training.short_description}</p>
 
-                    <div className="mt-4 flex flex-wrap gap-4 text-xs text-white/50">
+                    <div className="mt-4 flex flex-wrap gap-4 text-xs text-ink-950/60">
                       {training.workload && (
                         <span className="flex items-center gap-1.5">
-                          <Clock className="h-3.5 w-3.5 text-gold" aria-hidden="true" />
+                          <Clock className="h-3.5 w-3.5 text-orange-dark" aria-hidden="true" />
                           {training.workload}
                         </span>
                       )}
                       {training.modality && (
                         <span className="flex items-center gap-1.5">
-                          <MapPin className="h-3.5 w-3.5 text-gold" aria-hidden="true" />
+                          <MapPin className="h-3.5 w-3.5 text-orange-dark" aria-hidden="true" />
                           {training.modality}
                         </span>
                       )}

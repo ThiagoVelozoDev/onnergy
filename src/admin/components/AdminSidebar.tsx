@@ -56,7 +56,7 @@ export function AdminSidebar({ onNavigate }: AdminSidebarProps) {
               className={({ isActive }) =>
                 cn(
                   "flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium text-white/60 transition-colors hover:bg-white/5 hover:text-paper",
-                  isActive && "bg-gold/10 text-gold",
+                  isActive && "bg-orange/10 text-orange",
                 )
               }
             >

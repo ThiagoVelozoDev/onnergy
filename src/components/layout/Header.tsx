@@ -19,7 +19,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5 bg-ink-950/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-white/5 bg-ink-950">
       <Container className="flex h-20 items-center justify-between">
         <NavLink to="/" aria-label="ONNERGY — página inicial">
           <Logo />
@@ -33,8 +33,8 @@ export function Header() {
               end={link.href === "/"}
               className={({ isActive }) =>
                 cn(
-                  "text-xs font-semibold uppercase tracking-wide text-white/70 transition-colors hover:text-gold",
-                  isActive && "text-gold",
+                  "text-xs font-semibold uppercase tracking-wide text-white/70 transition-colors hover:text-orange",
+                  isActive && "text-orange",
                 )
               }
             >
@@ -73,7 +73,7 @@ export function Header() {
                 className={({ isActive }) =>
                   cn(
                     "rounded-md px-3 py-3 text-sm font-medium text-white/80 hover:bg-white/5",
-                    isActive && "text-gold",
+                    isActive && "text-orange",
                   )
                 }
               >
