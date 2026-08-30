@@ -1,6 +1,7 @@
 import {
   BarChart3,
   Building2,
+  Camera,
   GraduationCap,
   Image,
   Inbox,
@@ -29,6 +30,7 @@ const ICONS: Record<string, LucideIcon> = {
   "bar-chart-3": BarChart3,
   inbox: Inbox,
   image: Image,
+  camera: Camera,
   menu: MenuIcon,
   "layout-panel-left": LayoutPanelLeft,
   search: Search,

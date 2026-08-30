@@ -166,6 +166,34 @@ export interface NewLead {
   source?: string;
 }
 
+export type PortfolioMediaType = "photo" | "video";
+
+export interface PortfolioCategory {
+  id: string;
+  title: string;
+  slug: string;
+  description: string | null;
+  icon: string | null;
+  sort_order: number;
+  active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PortfolioItem {
+  id: string;
+  category_id: string;
+  title: string;
+  media_type: PortfolioMediaType;
+  media_url: string;
+  thumbnail_url: string | null;
+  sort_order: number;
+  active: boolean;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+}
+
 export interface Media {
   id: string;
   file_name: string;

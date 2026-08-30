@@ -7,12 +7,17 @@ import type {
   Course,
   FooterSettings,
   HeroContent,
+  PortfolioCategory,
+  PortfolioItem,
   Service,
   SiteSettings,
   SocialLink,
   Statistic,
   Training,
 } from "@/types";
+import portfolioSolar1 from "@/assets/placa-solar0.jpeg";
+import portfolioSolar2 from "@/assets/placa-solar00.jpeg";
+import portfolioSolar3 from "@/assets/placa-solar1.jpeg";
 
 const now = new Date().toISOString();
 
@@ -268,4 +273,64 @@ export const seedSocialLinks: SocialLink[] = [
   { id: "seed-social-2", platform: "linkedin", url: "#", icon: "linkedin", sort_order: 2, active: true, created_at: now, updated_at: now },
   { id: "seed-social-3", platform: "youtube", url: "#", icon: "youtube", sort_order: 3, active: true, created_at: now, updated_at: now },
   { id: "seed-social-4", platform: "whatsapp", url: "#", icon: "whatsapp", sort_order: 4, active: true, created_at: now, updated_at: now },
+];
+
+/**
+ * Categorias espelham as áreas de atuação da empresa (ver CeoSection e
+ * SolutionsGrid). Apenas "Energia Solar" tem itens de exemplo reais
+ * (fotos já presentes no repositório); as demais aparecem vazias até que
+ * mídia real seja enviada pelo Media Manager — não inventar fotos/vídeos
+ * de outras categorias.
+ */
+export const seedPortfolioCategories: PortfolioCategory[] = [
+  { id: "seed-portfolio-cat-1", title: "Energia Solar", slug: "energia-solar", description: null, icon: "sun", sort_order: 1, active: true, created_at: now, updated_at: now },
+  { id: "seed-portfolio-cat-2", title: "Instalação e manutenção de QGBT", slug: "qgbt", description: null, icon: "box", sort_order: 2, active: true, created_at: now, updated_at: now },
+  { id: "seed-portfolio-cat-3", title: "Construção de rede", slug: "construcao-de-rede", description: null, icon: "network", sort_order: 3, active: true, created_at: now, updated_at: now },
+  { id: "seed-portfolio-cat-4", title: "Subestações", slug: "subestacoes", description: null, icon: "tower-control", sort_order: 4, active: true, created_at: now, updated_at: now },
+  { id: "seed-portfolio-cat-5", title: "Automação", slug: "automacao", description: null, icon: "cog", sort_order: 5, active: true, created_at: now, updated_at: now },
+  { id: "seed-portfolio-cat-6", title: "Telecomunicações", slug: "telecomunicacoes", description: null, icon: "radio", sort_order: 6, active: true, created_at: now, updated_at: now },
+  { id: "seed-portfolio-cat-7", title: "Cursos", slug: "cursos", description: null, icon: "graduation-cap", sort_order: 7, active: true, created_at: now, updated_at: now },
+  { id: "seed-portfolio-cat-8", title: "Treinamentos", slug: "treinamentos", description: null, icon: "presentation", sort_order: 8, active: true, created_at: now, updated_at: now },
+];
+
+export const seedPortfolioItems: PortfolioItem[] = [
+  {
+    id: "seed-portfolio-item-1",
+    category_id: "seed-portfolio-cat-1",
+    title: "Instalação fotovoltaica residencial",
+    media_type: "photo",
+    media_url: portfolioSolar1,
+    thumbnail_url: null,
+    sort_order: 1,
+    active: true,
+    created_at: now,
+    updated_at: now,
+    deleted_at: null,
+  },
+  {
+    id: "seed-portfolio-item-2",
+    category_id: "seed-portfolio-cat-1",
+    title: "Painéis solares em telhado comercial",
+    media_type: "photo",
+    media_url: portfolioSolar2,
+    thumbnail_url: null,
+    sort_order: 2,
+    active: true,
+    created_at: now,
+    updated_at: now,
+    deleted_at: null,
+  },
+  {
+    id: "seed-portfolio-item-3",
+    category_id: "seed-portfolio-cat-1",
+    title: "Montagem de estrutura fotovoltaica",
+    media_type: "photo",
+    media_url: portfolioSolar3,
+    thumbnail_url: null,
+    sort_order: 3,
+    active: true,
+    created_at: now,
+    updated_at: now,
+    deleted_at: null,
+  },
 ];

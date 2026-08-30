@@ -17,6 +17,7 @@ const FOOTER_COLUMNS = [
       { label: "Serviços", href: "/servicos" },
       { label: "Cursos", href: "/cursos" },
       { label: "Treinamentos", href: "/treinamentos" },
+      { label: "Portfólio", href: "/portfolio" },
       { label: "Quem Somos", href: "/sobre" },
       { label: "Contato", href: "/contato" },
     ],

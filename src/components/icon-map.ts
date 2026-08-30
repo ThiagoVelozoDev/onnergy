@@ -1,11 +1,18 @@
 import {
   Award,
+  Box,
+  Cog,
   FileText,
   GraduationCap,
   Instagram,
   Linkedin,
   MessageCircle,
+  Network,
+  Presentation,
+  Radio,
   ShieldCheck,
+  Sun,
+  TowerControl,
   Users,
   Wrench,
   Youtube,
@@ -25,6 +32,13 @@ const ICONS: Record<string, LucideIcon> = {
   linkedin: Linkedin,
   youtube: Youtube,
   whatsapp: MessageCircle,
+  sun: Sun,
+  box: Box,
+  network: Network,
+  cog: Cog,
+  radio: Radio,
+  presentation: Presentation,
+  "tower-control": TowerControl,
 };
 
 export function getIcon(name?: string | null): LucideIcon {

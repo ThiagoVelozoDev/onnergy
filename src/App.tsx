@@ -6,6 +6,7 @@ import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import Courses from "@/pages/Courses";
 import Trainings from "@/pages/Trainings";
+import Portfolio from "@/pages/Portfolio";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
@@ -25,6 +26,7 @@ export default function App() {
             <Route path="/servicos" element={<Services />} />
             <Route path="/cursos" element={<Courses />} />
             <Route path="/treinamentos" element={<Trainings />} />
+            <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/sobre" element={<About />} />
             <Route path="/contato" element={<Contact />} />
           </Route>
@@ -39,6 +41,7 @@ export default function App() {
               <Route path="servicos" element={<ComingSoonPage title="Serviços" />} />
               <Route path="cursos" element={<ComingSoonPage title="Cursos" />} />
               <Route path="treinamentos" element={<ComingSoonPage title="Treinamentos" />} />
+              <Route path="portfolio" element={<ComingSoonPage title="Portfólio" />} />
               <Route path="empresa" element={<ComingSoonPage title="Empresa" />} />
               <Route path="estatisticas" element={<ComingSoonPage title="Estatísticas" />} />
               <Route path="leads" element={<ComingSoonPage title="Leads" />} />

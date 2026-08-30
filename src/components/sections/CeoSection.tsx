@@ -19,7 +19,7 @@ export function CeoSection() {
             <div className="absolute -inset-3 -z-10 rounded-3xl bg-orange/10" aria-hidden="true" />
             <img
               src={ceoPhoto}
-              alt="Edgar Castro, CEO da ONNERGY"
+              alt="Edgard Castro, CEO da ONNERGY"
               className="aspect-[4/5] w-full rounded-2xl border border-ink-950/10 object-cover shadow-lg"
             />
             <span className="absolute -bottom-5 left-5 flex items-center gap-2 rounded-xl border border-ink-950/10 bg-white px-4 py-2.5 shadow-md">

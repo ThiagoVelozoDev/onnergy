@@ -8,6 +8,7 @@ export const NAV_LINKS = [
   { label: "Serviços", href: "/servicos" },
   { label: "Cursos", href: "/cursos" },
   { label: "Treinamentos", href: "/treinamentos" },
+  { label: "Portfólio", href: "/portfolio" },
   { label: "Quem Somos", href: "/sobre" },
   { label: "Contato", href: "/contato" },
 ] as const;
@@ -18,6 +19,7 @@ export const ADMIN_NAV_ITEMS = [
   { label: "Serviços", href: "/admin/servicos", icon: "wrench" },
   { label: "Cursos", href: "/admin/cursos", icon: "graduation-cap" },
   { label: "Treinamentos", href: "/admin/treinamentos", icon: "users" },
+  { label: "Portfólio", href: "/admin/portfolio", icon: "camera" },
   { label: "Empresa", href: "/admin/empresa", icon: "building-2" },
   { label: "Estatísticas", href: "/admin/estatisticas", icon: "bar-chart-3" },
   { label: "Leads", href: "/admin/leads", icon: "inbox" },

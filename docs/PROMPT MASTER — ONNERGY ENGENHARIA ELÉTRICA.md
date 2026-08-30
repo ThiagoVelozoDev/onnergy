@@ -1,5 +1,14 @@
 # PROMPT MASTER — ONNERGY ENGENHARIA ELÉTRICA
 
+> **Nota de manutenção (2026-08-30):** este arquivo é o brief original usado para
+> iniciar o projeto — preservado como histórico. Partes dele já não refletem o
+> estado atual do código; a mais notável é a **seção 14 (paleta de cores)**,
+> que descrevia preto + branco + **dourado** e foi substituída por preto +
+> branco + **laranja** (ver marcação abaixo e a referência viva em
+> [`docs/DESIGN_SYSTEM.md`](DESIGN_SYSTEM.md)). Para arquitetura, banco de
+> dados e convenções atuais, prefira sempre `docs/ARCHITECTURE.md`,
+> `docs/DATABASE.md` e `docs/CONTRIBUTING.md` a este arquivo.
+
 Você é um engenheiro de software sênior especializado em:
 
 - React
@@ -700,17 +709,20 @@ Criar Home extremamente profissional.
 
 Design:
 
-**PRETO + BRANCO + DOURADO**
+**PRETO + BRANCO + LARANJA** ⚠️ *(atualizado — o brief original pedia "dourado"; a
+implementação final adotou laranja. Paleta oficial e atual em
+[`docs/DESIGN_SYSTEM.md`](DESIGN_SYSTEM.md).)*
 
 Cores:
 
 ```text
-#080808
-#111111
-#181818
-#F5F5F5
-#F5B800
-#FFC928
+#080808  ink-950
+#111111  ink-900
+#181818  ink-800
+#F5F5F5  paper
+#F97316  orange (DEFAULT)
+#FB923C  orange-light
+#C2410C  orange-dark
 ```
 
 Visual:
