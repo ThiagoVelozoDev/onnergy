@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  @apply bg-ink-950 text-paper;
+}
+
+body {
+  @apply antialiased;
+}
+
+::selection {
+  @apply bg-gold/30 text-paper;
+}
