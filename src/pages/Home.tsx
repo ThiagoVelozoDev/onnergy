@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { SolutionsGrid } from "@/components/sections/SolutionsGrid";
+import { CeoSection } from "@/components/sections/CeoSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { useSeo } from "@/hooks/useSeo";
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <Hero />
       <SolutionsGrid />
+      <CeoSection />
       <StatsSection />
       <CtaBanner />
     </>
