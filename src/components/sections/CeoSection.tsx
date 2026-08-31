@@ -19,7 +19,7 @@ export function CeoSection() {
             <div className="absolute -inset-3 -z-10 rounded-3xl bg-orange/10" aria-hidden="true" />
             <img
               src={ceoPhoto}
-              alt="Edgard Castro, CEO da ONNERGY"
+              alt="Edgardd Castro, CEO da ONNERGY"
               className="aspect-[4/5] w-full rounded-2xl border border-ink-950/10 object-cover shadow-lg"
             />
             <span className="absolute -bottom-5 left-5 flex items-center gap-2 rounded-xl border border-ink-950/10 bg-white px-4 py-2.5 shadow-md">
@@ -30,12 +30,12 @@ export function CeoSection() {
 
           <Reveal delay={120}>
             <span className="text-xs font-semibold uppercase tracking-widest text-orange-dark">CEO</span>
-            <h3 className="mt-2 text-2xl font-bold text-ink-950">Edgar Castro</h3>
+            <h3 className="mt-2 text-2xl font-bold text-ink-950">Edgard Castro</h3>
             <p className="mt-1 text-sm text-ink-950/60">Engenheiro Eletricista</p>
 
             <p className="mt-5 text-sm leading-relaxed text-ink-950/70">
               Engenheiro eletricista com mais de 10 anos de experiência no setor elétrico, atuação em projetos de energia solar, elétrica em geral,
-              automação, cursos, treinamentos, telecomunicação e construção de rede. Edgar fundou a ONNERGY para levar soluções técnicas de alto padrão a cada cliente —
+              automação, cursos, treinamentos, telecomunicação e construção de rede. Edgard fundou a ONNERGY para levar soluções técnicas de alto padrão a cada cliente —
               unindo conhecimento de campo, rigor normativo e um compromisso real com o resultado.
             </p>
 
