@@ -14,6 +14,7 @@ import { ProtectedRoute } from "@/admin/components/ProtectedRoute";
 import { AdminLayout } from "@/admin/components/AdminLayout";
 import LoginPage from "@/admin/pages/LoginPage";
 import DashboardPage from "@/admin/pages/DashboardPage";
+import PortfolioAdminPage from "@/admin/pages/portfolio/PortfolioAdminPage";
 import { ComingSoonPage } from "@/admin/pages/ComingSoonPage";
 
 export default function App() {
@@ -41,7 +42,7 @@ export default function App() {
               <Route path="servicos" element={<ComingSoonPage title="Serviços" />} />
               <Route path="cursos" element={<ComingSoonPage title="Cursos" />} />
               <Route path="treinamentos" element={<ComingSoonPage title="Treinamentos" />} />
-              <Route path="portfolio" element={<ComingSoonPage title="Portfólio" />} />
+              <Route path="portfolio" element={<PortfolioAdminPage />} />
               <Route path="empresa" element={<ComingSoonPage title="Empresa" />} />
               <Route path="estatisticas" element={<ComingSoonPage title="Estatísticas" />} />
               <Route path="leads" element={<ComingSoonPage title="Leads" />} />

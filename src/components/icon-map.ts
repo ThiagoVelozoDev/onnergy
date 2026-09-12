@@ -44,3 +44,5 @@ const ICONS: Record<string, LucideIcon> = {
 export function getIcon(name?: string | null): LucideIcon {
   return (name && ICONS[name]) || Zap;
 }
+
+export const ICON_KEYS: string[] = Object.keys(ICONS);

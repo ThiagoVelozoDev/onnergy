@@ -12,7 +12,7 @@
 
 ## Receita: adicionar uma nova entidade de conteúdo
 
-Exemplo real já implementado no projeto: o **Portfólio** (categorias + itens de mídia). Use os arquivos abaixo como referência ao criar a próxima entidade.
+Exemplo real já implementado no projeto: o **Portfólio** (categorias + itens de mídia) — cobre tanto a leitura pública (`/portfolio`) quanto o CRUD admin (`/admin/portfolio`, incluindo upload de arquivo para o Storage em `src/services/storageService.ts`). Use os arquivos abaixo como referência ao criar a próxima entidade.
 
 1. **Tipos** — `src/types/index.ts`: adicionar a(s) interface(s) (e um union type para enums, ex. `PortfolioMediaType`).
 2. **Migration** — `supabase/migrations/00N_nome.sql`: `create table`, índices, `alter table ... enable row level security`, policies (seguir o padrão em [DATABASE.md](DATABASE.md)), e seed apenas do que for configuração/categoria (nunca conteúdo fictício que pareça dado real de cliente).

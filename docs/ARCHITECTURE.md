@@ -79,7 +79,7 @@ Registradas em `src/App.tsx`, dentro de `<Route element={<PublicLayout />}>` (He
 
 `/admin/login` (`LoginPage`, sem proteção) → `/admin/*` dentro de `<Route path="/admin" element={<ProtectedRoute />}>` → `AdminLayout` (sidebar + header). `ADMIN_NAV_ITEMS` em `src/config/site.ts` alimenta a `AdminSidebar`.
 
-Estado atual: apenas **Dashboard** tem UI real (métricas de serviços/cursos/treinamentos ativos + leads via `leadsService`). Todos os outros módulos (`Hero`, `Serviços`, `Cursos`, `Treinamentos`, `Portfólio`, `Empresa`, `Estatísticas`, `Leads`, `Mídia`, `Menu`, `Footer`, `SEO`, `Configurações`) já têm rota + item de menu, mas renderizam `ComingSoonPage` — o CRUD ainda precisa ser implementado por módulo.
+Estado atual: **Dashboard** (métricas de serviços/cursos/treinamentos ativos + leads via `leadsService`) e **Portfólio** (`/admin/portfolio`, `src/admin/pages/portfolio/`) têm UI real. Portfólio cobre CRUD de categorias e itens de mídia, incluindo upload em lote de fotos direto para o Storage. Todos os outros módulos (`Hero`, `Serviços`, `Cursos`, `Treinamentos`, `Empresa`, `Estatísticas`, `Leads`, `Mídia`, `Menu`, `Footer`, `SEO`, `Configurações`) já têm rota + item de menu, mas renderizam `ComingSoonPage` — o CRUD ainda precisa ser implementado por módulo.
 
 ## Autenticação e autorização
 
@@ -88,4 +88,4 @@ Estado atual: apenas **Dashboard** tem UI real (métricas de serviços/cursos/tr
 
 ## Storage
 
-Bucket público `site-media`, criado em `supabase/migrations/004_storage.sql`, organizado por área (`logo/`, `hero/`, `services/`, `courses/`, `trainings/`, `gallery/`, `seo/`). Upload/edição restritos a staff autenticado (policy `is_staff()`), exclusão restrita a admin (`is_admin()`). O Media Manager (`/admin/midia`) que fará upload/validação de arquivo ainda não foi implementado (fase 2).
+Bucket público `site-media`, criado em `supabase/migrations/004_storage.sql`, organizado por área (`logo/`, `hero/`, `services/`, `courses/`, `trainings/`, `gallery/`, `seo/`). Upload/edição restritos a staff autenticado (policy `is_staff()`), exclusão restrita a admin (`is_admin()`). O Media Manager (`/admin/midia`) genérico ainda não foi implementado (fase 2), mas o upload de fotos do Portfólio já usa esse bucket diretamente via `src/services/storageService.ts` (validação de extensão/MIME/tamanho do lado cliente antes do upload, path `gallery/{category_id}/{uuid}-{arquivo}`).

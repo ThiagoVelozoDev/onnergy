@@ -194,6 +194,25 @@ export interface PortfolioItem {
   deleted_at: string | null;
 }
 
+export interface NewPortfolioCategory {
+  title: string;
+  slug: string;
+  description: string | null;
+  icon: string | null;
+  sort_order: number;
+  active: boolean;
+}
+
+export interface NewPortfolioItem {
+  category_id: string;
+  title: string;
+  media_type: PortfolioMediaType;
+  media_url: string;
+  thumbnail_url: string | null;
+  sort_order: number;
+  active: boolean;
+}
+
 export interface Media {
   id: string;
   file_name: string;

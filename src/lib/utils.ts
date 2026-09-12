@@ -27,6 +27,16 @@ export function formatDate(value: string): string {
   });
 }
 
+export function slugify(text: string): string {
+  return text
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export function formatDateTime(value: string): string {
   return new Date(value).toLocaleString("pt-BR", {
     day: "2-digit",

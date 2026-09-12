@@ -11,10 +11,17 @@ PostgreSQL via Supabase. Schema, RLS e dados de seed são versionados em `supaba
 | `003_seed.sql` | dados fictícios de exemplo (claramente identificados), placeholders `[INSERIR ...]` onde não há dado real |
 | `004_storage.sql` | bucket `site-media` + policies de Storage |
 | `005_portfolio.sql` | tabelas `portfolio_categories` / `portfolio_items`, RLS e seed das 8 categorias (sem itens de mídia — ver abaixo) |
+| `006_grants.sql` | `GRANT` de tabela para `anon`/`authenticated` no schema `public` — sem isso toda query falha com "permission denied" mesmo com RLS correta (RLS filtra linhas, não substitui o GRANT) |
 
 ## ⚠️ Status de aplicação no projeto Supabase real
 
-Verificado em 2026-08-30 via REST API (`GET /rest/v1/services` contra o projeto do `.env`): **retornou 404**, ou seja, **nenhuma migration foi aplicada ainda no projeto Supabase remoto** (`isodbguuvrntcxbplvnp`). O `.env` já tem credenciais reais configuradas, então o site já tenta consultar esse projeto — e cai no fallback de `seed.ts` silenciosamente (só um `console.warn`) em todas as páginas públicas. Mais grave: **o formulário de lead (`/contato`) está inserindo em uma tabela `leads` que não existe** — o erro é engolido (`catch` só faz `console.warn`) e o visitante vê a mensagem de sucesso normalmente e é redirecionado ao WhatsApp, mas **nenhum lead fica salvo no banco**.
+Verificado em 2026-08-30 via REST API (`GET /rest/v1/services` contra o projeto do `.env`): **retornou 404**, ou seja, na época nenhuma migration parecia ter sido aplicada no projeto Supabase remoto (`isodbguuvrntcxbplvnp`).
+
+**Atualização em 2026-09-12**: descobrimos que o projeto estava **pausado** (plano free do Supabase pausa após ~7 dias sem nenhuma requisição — dados e Storage continuam intactos, não é perda). Depois de retomado pelo usuário, reverificação confirmou que as migrations 001–005 realmente nunca tinham sido aplicadas (404 em todas as tabelas). O usuário aplicou o SQL combinado via SQL Editor e criou o primeiro usuário `admin` — mas todas as queries passaram a falhar com `permission denied for table ...` (código Postgres `42501`): as tabelas foram criadas sem `GRANT` de `SELECT`/`INSERT`/etc. para as roles `anon`/`authenticated`, então a RLS nunca chegava a ser avaliada. Corrigido com a migration `006_grants.sql`. Depois de aplicá-la, reverificar com o mesmo `curl` desta seção.
+
+Enquanto isso, para evitar que o projeto pause de novo, foi adicionado `.github/workflows/supabase-keepalive.yml` (roda às segundas e quintas, faz um `GET` leve na REST API) — requer os secrets `SUPABASE_URL`/`SUPABASE_ANON_KEY` cadastrados no repositório GitHub (Settings → Secrets and variables → Actions).
+
+O `.env` já tem credenciais reais configuradas, então o site já tenta consultar esse projeto — e cai no fallback de `seed.ts` silenciosamente (só um `console.warn`) em todas as páginas públicas enquanto o projeto estiver inacessível. Mais grave: **o formulário de lead (`/contato`) insere na tabela `leads`, e se ela não existir (ou o projeto estiver pausado) o erro é engolido** (`catch` só faz `console.warn`) e o visitante vê a mensagem de sucesso normalmente e é redirecionado ao WhatsApp, mas **nenhum lead fica salvo no banco** — reverificar isso também depois de retomar o projeto.
 
 ### Como aplicar as migrations
 
