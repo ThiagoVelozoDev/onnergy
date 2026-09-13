@@ -27,10 +27,10 @@ export const seedSiteSettings: SiteSettings = {
   website: "onnergy.com.br",
   description:
     "Soluções elétricas inteligentes, cursos e treinamentos que conectam você ao futuro.",
-  email: "[INSERIR E-MAIL]",
+  email: "edgard.castro@onnergy.com.br",
   phone: "[INSERIR TELEFONE]",
   whatsapp: "5569992076644",
-  address: "[INSERIR ENDEREÇO]",
+  address: "Rua Ieda Coelho de Freitas, nº 5627, Bairro Igarapé, CEP 76824-232",
   business_hours: "Segunda a Sexta, 08h às 18h",
   logo_url: null,
   favicon_url: null,
@@ -40,12 +40,12 @@ export const seedSiteSettings: SiteSettings = {
 
 export const seedHeroContent: HeroContent = {
   id: "seed-hero",
-  badge: "ENERGIA SOLAR • ECONOMIA • SUSTENTABILIDADE",
-  title: "Economize até 95% na sua conta de energia com energia solar.",
+  badge: "TECNOLOGIA • CONECTIVIDADE • AUTOMAÇÃO • ENERGIA",
+  title: "Soluções em Telecomunicações, Automações e Serviços elétricos.",
   description:
-    "Soluções completas em energia solar fotovoltaica para residências, comércios, indústrias e produtores rurais. Invista em economia, valorize seu imóvel e contribua com um futuro mais sustentável.",
-  primary_cta_text: "QUERO ECONOMIZAR AGORA",
-  secondary_cta_text: "SAIBA MAIS SOBRE ENERGIA SOLAR",
+    "Projetos, instalações e manutenção para empresas, indústrias e residências, com foco em eficiência, segurança e tecnologia para um futuro mais conectado.",
+  primary_cta_text: "SOLICITAR UM PROJETO",
+  secondary_cta_text: "CONHEÇA NOSSAS SOLUÇÕES",
   hero_image_url: null,
   active: true,
   created_at: now,

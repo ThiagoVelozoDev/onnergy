@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { DollarSign, Home, Leaf, Lock, MessageCircle, ShieldCheck, Sun } from "lucide-react";
+import { BarChart3, Lock, MessageCircle, Settings, Wifi, Zap } from "lucide-react";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { HeroPhotoCarousel } from "@/components/sections/HeroPhotoCarousel";
@@ -8,13 +8,19 @@ import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { generateWhatsAppMessage, openWhatsApp } from "@/services/whatsappService";
 
 const FEATURES = [
-  { icon: DollarSign, title: "Economia", description: "Reduza sua conta de luz em até 95%" },
-  { icon: Leaf, title: "Sustentável", description: "Energia limpa e renovável" },
-  { icon: Home, title: "Valorização", description: "Seu imóvel valorizado" },
-  { icon: ShieldCheck, title: "Garantia", description: "Equipamentos de alta qualidade e longa vida útil" },
+  { icon: Wifi, title: "Telecomunicações", description: "Redes, cabeamento e conectividade de alta performance" },
+  { icon: Settings, title: "Automações", description: "Processos mais inteligentes e eficientes" },
+  { icon: Zap, title: "Serviços elétricos", description: "Instalações, manutenções e soluções elétricas seguras" },
+  { icon: BarChart3, title: "Resultados", description: "Tecnologia que gera produtividade e reduz custos" },
 ];
 
-const HIGHLIGHT_PATTERNS = [/até\s*\d+%/i, /energia solar/i];
+const IMAGE_BADGES = [
+  { icon: Wifi, title: "CONECTIVIDADE", subtitle: "QUE APROXIMA" },
+  { icon: Settings, title: "AUTOMAÇÃO", subtitle: "QUE TRANSFORMA" },
+  { icon: Zap, title: "ENERGIA", subtitle: "QUE MOVE" },
+];
+
+const HIGHLIGHT_PATTERNS = [/Telecomunicações,\s*Automações\s+e/i];
 
 function highlightKeywords(text: string): ReactNode {
   let match: RegExpMatchArray | null = null;
@@ -107,13 +113,13 @@ export function Hero() {
 
           <Reveal as="p" delay={640} className="mt-5 flex items-center gap-1.5 text-xs text-white/40">
             <Lock className="h-3 w-3" aria-hidden="true" />
-            Sem compromisso. Fale com um especialista e receba uma análise gratuita.
+            Sem compromisso. Fale com nossa equipe e encontre a solução ideal para seu projeto.
           </Reveal>
         </div>
 
         <Reveal as="div" variant="fade" delay={200} className="relative min-h-[360px] lg:min-h-0">
           <HeroPhotoCarousel
-            alt="Equipe ONNERGY instalando painéis solares"
+            alt="Técnico da ONNERGY em instalação de telecomunicações e automação"
             className="object-[65%_center] sm:object-[70%_center] lg:object-[55%_center]"
           />
 
@@ -131,6 +137,22 @@ export function Hero() {
             aria-hidden="true"
           />
 
+          {/* Selos verticais sobre a foto, só no desktop (no mobile a foto é
+              mais baixa e não sobra espaço para eles). */}
+          <div className="pointer-events-none absolute inset-y-0 right-6 hidden flex-col justify-center gap-6 lg:flex">
+            {IMAGE_BADGES.map((badge) => (
+              <div key={badge.title} className="flex items-center gap-3">
+                <badge.icon className="h-5 w-5 shrink-0 text-white/80" aria-hidden="true" />
+                <span className="h-8 w-px bg-white/20" aria-hidden="true" />
+                <p className="text-xs font-semibold uppercase leading-tight text-paper">
+                  {badge.title}
+                  <br />
+                  {badge.subtitle}
+                </p>
+              </div>
+            ))}
+          </div>
+
           {/* Deslocado para cima no desktop para nunca colidir com o botão
               flutuante do WhatsApp, que fica fixo no canto do viewport. */}
           <Reveal
@@ -138,11 +160,11 @@ export function Hero() {
             className="absolute inset-x-4 bottom-4 flex items-start gap-3 rounded-xl border border-white/10 bg-ink-950/90 p-4 backdrop-blur sm:inset-x-auto sm:bottom-6 sm:right-6 sm:max-w-xs lg:bottom-24"
           >
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-orange/10">
-              <Sun className="h-5 w-5 text-orange" aria-hidden="true" />
+              <Settings className="h-5 w-5 text-orange" aria-hidden="true" />
             </span>
             <div>
               <p className="text-sm font-bold text-paper">Projetos personalizados para sua realidade</p>
-              <p className="text-xs text-white/50">Mais de 500 sistemas instalados</p>
+              <p className="text-xs text-white/50">Da análise à implementação</p>
             </div>
           </Reveal>
         </Reveal>
