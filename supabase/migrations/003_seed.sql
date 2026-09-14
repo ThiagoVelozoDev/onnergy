@@ -39,7 +39,7 @@ insert into trainings (title, slug, short_description, description, target_audie
 ('Reciclagem NR-10', 'reciclagem-nr-10', 'Atualização periódica obrigatória para profissionais já certificados.', 'Treinamento fictício de exemplo (dado de seed).', 'Profissionais certificados', '20h', 'Presencial', 'Saiba mais', false, true, 2);
 
 insert into statistics (value, title, description, icon, sort_order, active) values
-('+10', 'Anos de experiência', null, 'award', 1, true),
+('+25', 'Anos de experiência', null, 'award', 1, true),
 ('+1.000', 'Clientes atendidos', null, 'users', 2, true),
 ('+2.500', 'Projetos e serviços', null, 'zap', 3, true),
 ('+500', 'Alunos formados', null, 'graduation-cap', 4, true);

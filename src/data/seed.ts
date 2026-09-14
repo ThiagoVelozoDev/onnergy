@@ -218,7 +218,7 @@ export const seedTrainings: Training[] = [
 export const seedStatistics: Statistic[] = [
   {
     id: "seed-stat-1",
-    value: "+10",
+    value: "+25",
     title: "Anos de experiência",
     description: null,
     icon: "award",
