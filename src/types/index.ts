@@ -101,6 +101,16 @@ export interface Statistic {
   updated_at: string;
 }
 
+export interface PartnerCompany {
+  id: string;
+  name: string;
+  logo_url: string;
+  sort_order: number;
+  active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface MenuItem {
   id: string;
   label: string;

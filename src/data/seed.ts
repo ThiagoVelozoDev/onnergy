@@ -7,6 +7,7 @@ import type {
   Course,
   FooterSettings,
   HeroContent,
+  PartnerCompany,
   PortfolioCategory,
   PortfolioItem,
   Service,
@@ -18,6 +19,9 @@ import type {
 import portfolioSolar1 from "@/assets/placa-solar0.jpeg";
 import portfolioSolar2 from "@/assets/placa-solar00.jpeg";
 import portfolioSolar3 from "@/assets/placa-solar1.jpeg";
+import partnerEdp from "@/assets/empresas-parceiras/edp.png";
+import partnerEnergisa from "@/assets/empresas-parceiras/energisa.jpeg";
+import partnerEnermais from "@/assets/empresas-parceiras/enermais.jpeg";
 
 const now = new Date().toISOString();
 
@@ -252,6 +256,36 @@ export const seedStatistics: Statistic[] = [
     description: null,
     icon: "graduation-cap",
     sort_order: 4,
+    active: true,
+    created_at: now,
+    updated_at: now,
+  },
+];
+
+export const seedPartnerCompanies: PartnerCompany[] = [
+  {
+    id: "seed-partner-edp",
+    name: "EDP",
+    logo_url: partnerEdp,
+    sort_order: 1,
+    active: true,
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "seed-partner-energisa",
+    name: "Grupo Energisa",
+    logo_url: partnerEnergisa,
+    sort_order: 2,
+    active: true,
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "seed-partner-enermais",
+    name: "EnerMais Energia",
+    logo_url: partnerEnermais,
+    sort_order: 3,
     active: true,
     created_at: now,
     updated_at: now,

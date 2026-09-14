@@ -51,6 +51,7 @@ update public.profiles set role = 'admin' where email = 'voce@onnergy.com.br';
 | `courses` | cursos exibidos em `/cursos` | soft delete |
 | `trainings` | treinamentos exibidos em `/treinamentos` | soft delete |
 | `statistics` | números da seção de estatísticas da Home | — |
+| `partner_companies` | logos de empresas parceiras exibidos na Home | — |
 | `menu_items` | reservado para menu administrável (ainda não consumido pelo frontend — hoje o menu vem de `NAV_LINKS`) | — |
 | `footer_settings` | descrição/copyright/links legais do rodapé | — |
 | `social_links` | ícones sociais do rodapé | — |

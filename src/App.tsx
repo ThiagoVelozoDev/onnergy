@@ -43,6 +43,7 @@ export default function App() {
               <Route path="cursos" element={<ComingSoonPage title="Cursos" />} />
               <Route path="treinamentos" element={<ComingSoonPage title="Treinamentos" />} />
               <Route path="portfolio" element={<PortfolioAdminPage />} />
+              <Route path="parceiros" element={<ComingSoonPage title="Parceiros" />} />
               <Route path="empresa" element={<ComingSoonPage title="Empresa" />} />
               <Route path="estatisticas" element={<ComingSoonPage title="Estatísticas" />} />
               <Route path="leads" element={<ComingSoonPage title="Leads" />} />

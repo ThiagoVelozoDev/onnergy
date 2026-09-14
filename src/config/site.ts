@@ -20,6 +20,7 @@ export const ADMIN_NAV_ITEMS = [
   { label: "Cursos", href: "/admin/cursos", icon: "graduation-cap" },
   { label: "Treinamentos", href: "/admin/treinamentos", icon: "users" },
   { label: "Portfólio", href: "/admin/portfolio", icon: "camera" },
+  { label: "Parceiros", href: "/admin/parceiros", icon: "handshake" },
   { label: "Empresa", href: "/admin/empresa", icon: "building-2" },
   { label: "Estatísticas", href: "/admin/estatisticas", icon: "bar-chart-3" },
   { label: "Leads", href: "/admin/leads", icon: "inbox" },
