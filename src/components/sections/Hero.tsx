@@ -3,6 +3,7 @@ import { BarChart3, Lock, MessageCircle, Settings, Wifi, Zap } from "lucide-reac
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { HeroPhotoCarousel } from "@/components/sections/HeroPhotoCarousel";
+import technicianPhoto from "@/assets/carrousel/Tecnico.png";
 import { useHero } from "@/hooks/useHero";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { generateWhatsAppMessage, openWhatsApp } from "@/services/whatsappService";
@@ -47,6 +48,11 @@ function highlightKeywords(text: string): ReactNode {
 const IMAGE_FADE_GRADIENT =
   "linear-gradient(to right, #080808 0%, #080808 5%, rgba(8,8,8,0.85) 11%, rgba(8,8,8,0.6) 18%, rgba(8,8,8,0.35) 25%, rgba(8,8,8,0.15) 33%, rgba(8,8,8,0.04) 40%, rgba(8,8,8,0) 48%)";
 
+// Mobile/tablet: véu horizontal sobre a foto — sólido junto ao texto (esquerda),
+// dissolve para revelar o técnico e a torre ao fundo (direita).
+const MOBILE_SCRIM_X =
+  "linear-gradient(90deg, #080808 0%, #080808 8%, rgba(8,8,8,0.92) 32%, rgba(8,8,8,0.62) 55%, rgba(8,8,8,0.32) 75%, rgba(8,8,8,0.1) 100%)";
+
 export function Hero() {
   const { hero } = useHero();
   const { siteSettings } = useSiteSettings();
@@ -58,8 +64,8 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden border-b border-white/5 bg-ink-950">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="flex flex-col justify-center px-4 py-16 sm:px-6 lg:px-10 lg:py-24 xl:px-16">
+      <div className="relative grid grid-cols-1 lg:grid-cols-2">
+        <div className="relative z-10 flex flex-col justify-center px-4 py-16 sm:px-6 lg:px-10 lg:py-24 xl:px-16">
           {hero.badge && (
             <Reveal
               as="span"
@@ -83,14 +89,18 @@ export function Hero() {
             </Reveal>
           )}
 
-          <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4">
+          <div className="mt-8 grid grid-cols-4 divide-x divide-white/10 lg:gap-x-6 lg:gap-y-6 lg:divide-x-0">
             {FEATURES.map((feature, index) => (
-              <Reveal key={feature.title} delay={240 + index * 80} className="flex items-start gap-2.5">
+              <Reveal
+                key={feature.title}
+                delay={240 + index * 80}
+                className="flex min-w-0 flex-col items-center gap-1.5 px-2 text-center lg:flex-row lg:items-start lg:gap-2.5 lg:px-0 lg:text-left"
+              >
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-orange/30 bg-orange/5">
                   <feature.icon className="h-4 w-4 text-orange" aria-hidden="true" />
                 </span>
-                <div>
-                  <p className="text-sm font-bold text-paper">{feature.title}</p>
+                <div className="w-full min-w-0 lg:w-auto">
+                  <p className="break-words text-sm font-bold text-paper lg:break-normal">{feature.title}</p>
                   <p className="text-xs text-white/50">{feature.description}</p>
                 </div>
               </Reveal>
@@ -117,15 +127,27 @@ export function Hero() {
           </Reveal>
         </div>
 
-        <Reveal as="div" variant="fade" delay={200} className="relative min-h-[360px] lg:min-h-0">
+        <Reveal as="div" variant="fade" delay={200} className="absolute inset-0 z-0 lg:relative lg:inset-auto">
+          <img
+            src={technicianPhoto}
+            alt="Técnico da ONNERGY em instalação de telecomunicações e automação"
+            className="absolute inset-0 h-full w-full object-cover object-[65%_center] sm:object-[70%_center] lg:hidden"
+          />
           <HeroPhotoCarousel
             alt="Técnico da ONNERGY em instalação de telecomunicações e automação"
             className="object-[65%_center] sm:object-[70%_center] lg:object-[55%_center]"
           />
 
-          {/* Mobile/tablet: funde o topo da foto com o preto do conteúdo acima dela. */}
+          {/* Mobile/tablet: véu horizontal — texto (esquerda) legível, técnico (direita) visível. */}
           <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950 via-ink-950/10 to-transparent lg:hidden"
+            className="pointer-events-none absolute inset-0 lg:hidden"
+            style={{ background: MOBILE_SCRIM_X }}
+            aria-hidden="true"
+          />
+
+          {/* Mobile/tablet: véu inferior — mantém os cards de features e a linha de confiança legíveis. */}
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink-950 via-ink-950/70 to-transparent lg:hidden"
             aria-hidden="true"
           />
 
@@ -157,7 +179,7 @@ export function Hero() {
               flutuante do WhatsApp, que fica fixo no canto do viewport. */}
           <Reveal
             delay={500}
-            className="absolute inset-x-4 bottom-4 flex items-start gap-3 rounded-xl border border-white/10 bg-ink-950/90 p-4 backdrop-blur sm:inset-x-auto sm:bottom-6 sm:right-6 sm:max-w-xs lg:bottom-24"
+            className="absolute inset-x-4 bottom-4 hidden items-start gap-3 rounded-xl border border-white/10 bg-ink-950/90 p-4 backdrop-blur sm:inset-x-auto sm:bottom-6 sm:right-6 sm:max-w-xs lg:flex lg:bottom-24"
           >
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-orange/10">
               <Settings className="h-5 w-5 text-orange" aria-hidden="true" />

@@ -37,7 +37,7 @@ export function HeroPhotoCarousel({ alt, className }: HeroPhotoCarouselProps) {
           alt={index === activeIndex ? alt : ""}
           aria-hidden={index === activeIndex ? undefined : true}
           className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
+            "absolute inset-0 hidden h-full w-full object-cover transition-opacity duration-1000 ease-in-out motion-reduce:transition-none lg:block",
             index === activeIndex ? "opacity-100" : "opacity-0",
             className,
           )}
