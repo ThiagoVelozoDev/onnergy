@@ -19,7 +19,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5 bg-ink-950">
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-white/5 bg-ink-950">
       <Container className="flex h-20 items-center justify-between">
         <NavLink to="/" aria-label="ONNERGY — página inicial">
           <Logo />

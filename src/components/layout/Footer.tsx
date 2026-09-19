@@ -54,11 +54,11 @@ export function Footer() {
 
   return (
     <footer className="border-t border-white/5 bg-ink-950">
-      <Container className="grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 lg:grid-cols-5">
+      <Container className="grid grid-cols-1 gap-8 py-10 sm:grid-cols-2 lg:grid-cols-5">
         <div className="sm:col-span-2 lg:col-span-2">
           <Logo />
-          <p className="mt-4 max-w-xs text-sm text-white/50">{footerSettings.description}</p>
-          <div className="mt-6 flex gap-3">
+          <p className="mt-3 max-w-xs text-sm text-white/50">{footerSettings.description}</p>
+          <div className="mt-4 flex gap-2">
             {socialLinks.map((social) => {
               const Icon = getIcon(social.icon);
               return (
@@ -66,33 +66,15 @@ export function Footer() {
                   key={social.id}
                   href={social.url}
                   aria-label={social.platform}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/60 transition-colors hover:border-orange hover:text-orange"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-white/60 transition-colors hover:border-orange hover:text-orange"
                 >
-                  <Icon className="h-4 w-4" aria-hidden="true" />
+                  <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                 </a>
               );
             })}
           </div>
-        </div>
 
-        {FOOTER_COLUMNS.map((column) => (
-          <div key={column.title}>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-white/40">{column.title}</h3>
-            <ul className="mt-4 space-y-2.5">
-              {column.links.map((link) => (
-                <li key={link.label}>
-                  <Link to={link.href} className="text-sm text-white/60 hover:text-orange">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-
-        <div>
-          <h3 className="text-xs font-semibold uppercase tracking-wide text-white/40">Contato</h3>
-          <ul className="mt-4 space-y-3 text-sm text-white/60">
+          <ul className="mt-5 space-y-2 text-sm text-white/60">
             <li className="flex items-start gap-2">
               <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-orange" aria-hidden="true" />
               {siteSettings.whatsapp}
@@ -111,9 +93,24 @@ export function Footer() {
             </li>
           </ul>
         </div>
+
+        {FOOTER_COLUMNS.map((column) => (
+          <div key={column.title}>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-white/40">{column.title}</h3>
+            <ul className="mt-4 space-y-2.5">
+              {column.links.map((link) => (
+                <li key={link.label}>
+                  <Link to={link.href} className="text-sm text-white/60 hover:text-orange">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </Container>
 
-      <div className="border-t border-white/5 py-6">
+      <div className="border-t border-white/5 py-5">
         <Container className="flex flex-col items-center justify-between gap-3 text-xs text-white/40 sm:flex-row">
           <p>{footerSettings.copyright}</p>
           <div className="flex gap-6">

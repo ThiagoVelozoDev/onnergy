@@ -61,6 +61,18 @@ export async function updatePortfolioCategory(
   return data as PortfolioCategory;
 }
 
+export async function swapPortfolioCategoriesOrder(
+  a: Pick<PortfolioCategory, "id" | "sort_order">,
+  b: Pick<PortfolioCategory, "id" | "sort_order">,
+): Promise<void> {
+  const [resultA, resultB] = await Promise.all([
+    supabase.from("portfolio_categories").update({ sort_order: b.sort_order }).eq("id", a.id),
+    supabase.from("portfolio_categories").update({ sort_order: a.sort_order }).eq("id", b.id),
+  ]);
+  if (resultA.error) throw resultA.error;
+  if (resultB.error) throw resultB.error;
+}
+
 export async function deletePortfolioCategory(id: string): Promise<void> {
   const items = await getAllPortfolioItemsByCategory(id, { includeDeleted: true });
   const paths = items

@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { Pencil, Plus, Trash2 } from "lucide-react";
+import { ChevronDown, ChevronUp, Pencil, Plus, Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { useToast } from "@/components/ui/Toast";
 import { getIcon } from "@/components/icon-map";
 import { cn } from "@/lib/utils";
-import { deletePortfolioCategory, updatePortfolioCategory } from "@/services/portfolioService";
+import {
+  deletePortfolioCategory,
+  swapPortfolioCategoriesOrder,
+  updatePortfolioCategory,
+} from "@/services/portfolioService";
 import { CategoryForm } from "@/admin/pages/portfolio/CategoryForm";
 import type { PortfolioCategory } from "@/types";
 
@@ -27,6 +31,17 @@ export function CategoryList({ categories, selectedCategoryId, onSelect, onChang
       onChanged();
     } catch (error) {
       showToast(error instanceof Error ? error.message : "Erro ao atualizar categoria.", "error");
+    }
+  }
+
+  async function handleMove(index: number, direction: -1 | 1) {
+    const targetIndex = index + direction;
+    if (targetIndex < 0 || targetIndex >= categories.length) return;
+    try {
+      await swapPortfolioCategoriesOrder(categories[index], categories[targetIndex]);
+      onChanged();
+    } catch (error) {
+      showToast(error instanceof Error ? error.message : "Erro ao reordenar.", "error");
     }
   }
 
@@ -66,7 +81,7 @@ export function CategoryList({ categories, selectedCategoryId, onSelect, onChang
       )}
 
       <div className="space-y-2">
-        {categories.map((category) => {
+        {categories.map((category, index) => {
           if (editingId === category.id) {
             return (
               <CategoryForm
@@ -90,6 +105,26 @@ export function CategoryList({ categories, selectedCategoryId, onSelect, onChang
                 category.id === selectedCategoryId ? "border-orange bg-orange/5" : "border-ink-950/10 bg-white/90",
               )}
             >
+              <div className="flex shrink-0 flex-col">
+                <button
+                  type="button"
+                  onClick={() => handleMove(index, -1)}
+                  disabled={index === 0}
+                  aria-label="Mover para cima"
+                  className="rounded p-0.5 text-ink-950/60 hover:text-orange-dark disabled:opacity-30"
+                >
+                  <ChevronUp className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleMove(index, 1)}
+                  disabled={index === categories.length - 1}
+                  aria-label="Mover para baixo"
+                  className="rounded p-0.5 text-ink-950/60 hover:text-orange-dark disabled:opacity-30"
+                >
+                  <ChevronDown className="h-4 w-4" />
+                </button>
+              </div>
               <button
                 type="button"
                 onClick={() => onSelect(category.id)}
