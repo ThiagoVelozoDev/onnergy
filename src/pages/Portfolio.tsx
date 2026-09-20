@@ -7,10 +7,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { LoadingState } from "@/components/ui/LoadingState";
 import { ErrorState } from "@/components/ui/ErrorState";
 import { EmptyState } from "@/components/ui/EmptyState";
+import { Lightbox } from "@/components/ui/Lightbox";
 import { usePortfolioCategories } from "@/hooks/usePortfolioCategories";
 import { usePortfolioItems } from "@/hooks/usePortfolioItems";
 import { useSeo } from "@/hooks/useSeo";
 import { cn } from "@/lib/utils";
+import type { PortfolioItem } from "@/types";
 
 export default function Portfolio() {
   useSeo({
@@ -20,6 +22,7 @@ export default function Portfolio() {
 
   const { categories, loading: loadingCategories, error: categoriesError } = usePortfolioCategories();
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
+  const [lightboxItem, setLightboxItem] = useState<PortfolioItem | null>(null);
 
   useEffect(() => {
     if (!selectedCategoryId && categories.length > 0) {
@@ -93,12 +96,19 @@ export default function Portfolio() {
                       >
                         <div className="relative">
                           {item.media_type === "photo" ? (
-                            <img
-                              src={item.media_url}
-                              alt={item.title}
-                              className="h-56 w-full object-cover"
-                              loading="lazy"
-                            />
+                            <button
+                              type="button"
+                              onClick={() => setLightboxItem(item)}
+                              aria-label={`Ver foto em tamanho real: ${item.title}`}
+                              className="block h-56 w-full cursor-zoom-in overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-dark focus-visible:ring-offset-2"
+                            >
+                              <img
+                                src={item.media_url}
+                                alt={item.title}
+                                className="h-56 w-full object-cover transition-transform duration-300 hover:scale-105"
+                                loading="lazy"
+                              />
+                            </button>
                           ) : (
                             <video
                               src={item.media_url}
@@ -114,7 +124,9 @@ export default function Portfolio() {
                             </span>
                           )}
                         </div>
-                        <figcaption className="p-4 text-sm font-medium text-ink-950">{item.title}</figcaption>
+                        {item.media_type === "video" && (
+                          <figcaption className="p-4 text-sm font-medium text-ink-950">{item.title}</figcaption>
+                        )}
                       </Reveal>
                     ))}
                   </div>
@@ -124,6 +136,14 @@ export default function Portfolio() {
           )}
         </Container>
       </section>
+
+      {lightboxItem && (
+        <Lightbox
+          src={lightboxItem.media_url}
+          alt={lightboxItem.title}
+          onClose={() => setLightboxItem(null)}
+        />
+      )}
     </>
   );
 }
