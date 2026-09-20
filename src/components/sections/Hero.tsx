@@ -89,7 +89,7 @@ export function Hero() {
             </Reveal>
           )}
 
-          <div className="mt-8 grid grid-cols-4 divide-x divide-white/10 lg:gap-x-6 lg:gap-y-6 lg:divide-x-0">
+          <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-x-0 sm:gap-y-0 sm:divide-x sm:divide-white/10 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-6 lg:divide-x-0 min-[1800px]:grid-cols-4">
             {FEATURES.map((feature, index) => (
               <Reveal
                 key={feature.title}
@@ -100,8 +100,8 @@ export function Hero() {
                   <feature.icon className="h-4 w-4 text-orange" aria-hidden="true" />
                 </span>
                 <div className="w-full min-w-0 lg:w-auto">
-                  <p className="break-words text-sm font-bold text-paper lg:break-normal">{feature.title}</p>
-                  <p className="text-xs text-white/50">{feature.description}</p>
+                  <p className="break-words text-sm font-bold text-paper">{feature.title}</p>
+                  <p className="break-words text-xs text-white/50">{feature.description}</p>
                 </div>
               </Reveal>
             ))}
