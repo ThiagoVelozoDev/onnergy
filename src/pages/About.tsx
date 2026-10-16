@@ -1,10 +1,13 @@
+import { useMemo } from "react";
 import { Award, ShieldCheck, Target } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/layout/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { useSeo } from "@/hooks/useSeo";
+import { useSeo, type StructuredDataItem } from "@/hooks/useSeo";
+import { useSeoSettings } from "@/hooks/useSeoSettings";
+import { buildBreadcrumbJsonLd, SITE_URL } from "@/lib/structuredData";
 
 const VALUES = [
   {
@@ -25,12 +28,30 @@ const VALUES = [
 ];
 
 export default function About() {
-  useSeo({
-    title: "Quem Somos | ONNERGY Engenharia Elétrica",
-    description: "Conheça a história e os valores da ONNERGY Engenharia Elétrica.",
-  });
-
   const { siteSettings } = useSiteSettings();
+  const { data: seo } = useSeoSettings("sobre");
+
+  const structuredData = useMemo<StructuredDataItem[]>(
+    () => [
+      {
+        id: "breadcrumb",
+        data: buildBreadcrumbJsonLd([
+          { name: "Início", path: "/" },
+          { name: "Quem Somos", path: "/sobre" },
+        ]),
+      },
+    ],
+    [],
+  );
+
+  useSeo({
+    title: seo?.title ?? "Quem Somos | ONNERGY Engenharia Elétrica",
+    description: seo?.description ?? "Conheça a história e os valores da ONNERGY Engenharia Elétrica.",
+    canonical: seo?.canonical_url ?? `${SITE_URL}/sobre`,
+    ogTitle: seo?.og_title ?? undefined,
+    ogDescription: seo?.og_description ?? undefined,
+    structuredData,
+  });
 
   return (
     <>

@@ -1,25 +1,46 @@
+import { useMemo } from "react";
 import { Clock, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/layout/PageHero";
 import { Card } from "@/components/ui/Card";
 import { LeadForm } from "@/components/sections/LeadForm";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { useSeo } from "@/hooks/useSeo";
+import { useSeo, type StructuredDataItem } from "@/hooks/useSeo";
+import { useSeoSettings } from "@/hooks/useSeoSettings";
+import { buildBreadcrumbJsonLd, SITE_URL } from "@/lib/structuredData";
 
 export default function Contact() {
-  useSeo({
-    title: "Contato | ONNERGY Engenharia Elétrica",
-    description: "Fale com a ONNERGY Engenharia Elétrica pelo WhatsApp, e-mail ou telefone.",
-  });
-
   const { siteSettings } = useSiteSettings();
+  const { data: seo } = useSeoSettings("contato");
+
+  const structuredData = useMemo<StructuredDataItem[]>(
+    () => [
+      {
+        id: "breadcrumb",
+        data: buildBreadcrumbJsonLd([
+          { name: "Início", path: "/" },
+          { name: "Contato", path: "/contato" },
+        ]),
+      },
+    ],
+    [],
+  );
+
+  useSeo({
+    title: seo?.title ?? "Contato | ONNERGY Engenharia Elétrica",
+    description: seo?.description ?? "Fale com a ONNERGY Engenharia Elétrica pelo WhatsApp, e-mail ou telefone.",
+    canonical: seo?.canonical_url ?? `${SITE_URL}/contato`,
+    ogTitle: seo?.og_title ?? undefined,
+    ogDescription: seo?.og_description ?? undefined,
+    structuredData,
+  });
 
   return (
     <>
       <PageHero
         eyebrow="Contato"
         title="Vamos conversar sobre o seu projeto"
-        description="Preencha o formulário ou fale diretamente com um de nossos especialistas."
+        description="Preencha o formulário ou fale diretamente com um de nossos especialistas em Porto Velho."
       />
 
       <section className="py-16">

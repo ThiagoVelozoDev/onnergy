@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Clock, GraduationCap, MapPin, MessageCircle } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/layout/PageHero";
@@ -9,17 +10,40 @@ import { ErrorState } from "@/components/ui/ErrorState";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { useCourses } from "@/hooks/useCourses";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { useSeo } from "@/hooks/useSeo";
+import { useSeo, type StructuredDataItem } from "@/hooks/useSeo";
+import { useSeoSettings } from "@/hooks/useSeoSettings";
+import { buildBreadcrumbJsonLd, buildCourseListJsonLd, SITE_URL } from "@/lib/structuredData";
 import { generateWhatsAppMessage, openWhatsApp } from "@/services/whatsappService";
 
 export default function Courses() {
-  useSeo({
-    title: "Cursos | ONNERGY Engenharia Elétrica",
-    description: "Formação completa com conteúdo atualizado e foco na prática do mercado.",
-  });
-
   const { courses, loading, error } = useCourses();
   const { siteSettings } = useSiteSettings();
+  const { data: seo } = useSeoSettings("cursos");
+
+  const structuredData = useMemo<StructuredDataItem[]>(() => {
+    const items: StructuredDataItem[] = [
+      {
+        id: "breadcrumb",
+        data: buildBreadcrumbJsonLd([
+          { name: "Início", path: "/" },
+          { name: "Cursos", path: "/cursos" },
+        ]),
+      },
+    ];
+    if (courses.length > 0) {
+      items.push({ id: "course-list", data: buildCourseListJsonLd(courses) });
+    }
+    return items;
+  }, [courses]);
+
+  useSeo({
+    title: seo?.title ?? "Cursos | ONNERGY Engenharia Elétrica",
+    description: seo?.description ?? "Formação completa com conteúdo atualizado e foco na prática do mercado.",
+    canonical: seo?.canonical_url ?? `${SITE_URL}/cursos`,
+    ogTitle: seo?.og_title ?? undefined,
+    ogDescription: seo?.og_description ?? undefined,
+    structuredData,
+  });
 
   function handleTalk(courseName: string) {
     if (!siteSettings.whatsapp) return;

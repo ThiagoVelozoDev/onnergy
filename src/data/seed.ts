@@ -10,6 +10,7 @@ import type {
   PartnerCompany,
   PortfolioCategory,
   PortfolioItem,
+  SeoSettings,
   Service,
   SiteSettings,
   SocialLink,
@@ -34,7 +35,7 @@ export const seedSiteSettings: SiteSettings = {
   email: "edgard.castro@onnergy.com.br",
   phone: "[INSERIR TELEFONE]",
   whatsapp: "5569992076644",
-  address: "Rua Ieda Coelho de Freitas, nº 5627, Bairro Igarapé, CEP 76824-232",
+  address: "Rua Ieda Coelho de Freitas, nº 5627, Bairro Igarapé, CEP 76824-232, Porto Velho - RO",
   business_hours: "Segunda a Sexta, 08h às 18h",
   logo_url: null,
   favicon_url: null,
@@ -47,7 +48,7 @@ export const seedHeroContent: HeroContent = {
   badge: "TECNOLOGIA • CONECTIVIDADE • AUTOMAÇÃO • ENERGIA",
   title: "Soluções em Telecomunicações, Automações e Serviços elétricos.",
   description:
-    "Projetos, instalações e manutenção para empresas, indústrias e residências, com foco em eficiência, segurança e tecnologia para um futuro mais conectado.",
+    "Projetos, instalações e manutenção para empresas, indústrias e residências de Porto Velho e Rondônia, com foco em eficiência, segurança e tecnologia para um futuro mais conectado.",
   primary_cta_text: "SOLICITAR UM PROJETO",
   secondary_cta_text: "CONHEÇA NOSSAS SOLUÇÕES",
   hero_image_url: null,
@@ -325,6 +326,105 @@ export const seedPortfolioCategories: PortfolioCategory[] = [
   { id: "seed-portfolio-cat-6", title: "Telecomunicações", slug: "telecomunicacoes", description: null, icon: "radio", sort_order: 6, active: true, created_at: now, updated_at: now },
   { id: "seed-portfolio-cat-7", title: "Cursos", slug: "cursos", description: null, icon: "graduation-cap", sort_order: 7, active: true, created_at: now, updated_at: now },
   { id: "seed-portfolio-cat-8", title: "Treinamentos", slug: "treinamentos", description: null, icon: "presentation", sort_order: 8, active: true, created_at: now, updated_at: now },
+];
+
+/**
+ * Fallback de `seo_settings` (title/description/OG/canonical por página
+ * pública). Copy já otimizada para busca local (Porto Velho/Rondônia) —
+ * ver docs/SEO.md para a arquitetura completa.
+ */
+export const seedSeoSettings: SeoSettings[] = [
+  {
+    id: "seed-seo-home",
+    page: "home",
+    title: "ONNERGY Engenharia Elétrica | Porto Velho - RO",
+    description:
+      "Serviços elétricos, automação, energia solar, cursos e treinamentos em Porto Velho e Rondônia. Segurança e responsabilidade técnica em cada projeto.",
+    og_title: "ONNERGY Engenharia Elétrica | Porto Velho - RO",
+    og_description:
+      "Serviços elétricos, automação, energia solar, cursos e treinamentos em Porto Velho e Rondônia. Segurança e responsabilidade técnica em cada projeto.",
+    og_image_url: null,
+    canonical_url: "https://onnergy.com.br/",
+    updated_at: now,
+  },
+  {
+    id: "seed-seo-servicos",
+    page: "servicos",
+    title: "Serviços Elétricos | ONNERGY | Porto Velho - RO",
+    description:
+      "Instalações, manutenções, laudos técnicos, adequações normativas e projetos elétricos em Porto Velho e Rondônia, com responsabilidade técnica.",
+    og_title: "Serviços Elétricos | ONNERGY | Porto Velho - RO",
+    og_description:
+      "Instalações, manutenções, laudos técnicos, adequações normativas e projetos elétricos em Porto Velho e Rondônia, com responsabilidade técnica.",
+    og_image_url: null,
+    canonical_url: "https://onnergy.com.br/servicos",
+    updated_at: now,
+  },
+  {
+    id: "seed-seo-cursos",
+    page: "cursos",
+    title: "Cursos Técnicos e NR-10 | ONNERGY | Porto Velho - RO",
+    description:
+      "Cursos técnicos com foco prático, carga horária completa e formação em NR-10 e SEP para profissionais de Porto Velho e Rondônia.",
+    og_title: "Cursos Técnicos e NR-10 | ONNERGY | Porto Velho - RO",
+    og_description:
+      "Cursos técnicos com foco prático, carga horária completa e formação em NR-10 e SEP para profissionais de Porto Velho e Rondônia.",
+    og_image_url: null,
+    canonical_url: "https://onnergy.com.br/cursos",
+    updated_at: now,
+  },
+  {
+    id: "seed-seo-treinamentos",
+    page: "treinamentos",
+    title: "Treinamentos NR-10 e SEP | ONNERGY | Porto Velho - RO",
+    description:
+      "Treinamentos in company e abertos em NR-10 e SEP para equipes técnicas em Porto Velho e Rondônia, com foco em segurança e performance.",
+    og_title: "Treinamentos NR-10 e SEP | ONNERGY | Porto Velho - RO",
+    og_description:
+      "Treinamentos in company e abertos em NR-10 e SEP para equipes técnicas em Porto Velho e Rondônia, com foco em segurança e performance.",
+    og_image_url: null,
+    canonical_url: "https://onnergy.com.br/treinamentos",
+    updated_at: now,
+  },
+  {
+    id: "seed-seo-portfolio",
+    page: "portfolio",
+    title: "Portfólio de Projetos | ONNERGY | Porto Velho - RO",
+    description:
+      "Fotos e vídeos reais de projetos em energia solar, QGBT, subestações e automação executados pela ONNERGY em Porto Velho e Rondônia.",
+    og_title: "Portfólio de Projetos | ONNERGY | Porto Velho - RO",
+    og_description:
+      "Fotos e vídeos reais de projetos em energia solar, QGBT, subestações e automação executados pela ONNERGY em Porto Velho e Rondônia.",
+    og_image_url: null,
+    canonical_url: "https://onnergy.com.br/portfolio",
+    updated_at: now,
+  },
+  {
+    id: "seed-seo-sobre",
+    page: "sobre",
+    title: "Quem Somos | ONNERGY Engenharia Elétrica – Porto Velho, RO",
+    description:
+      "Conheça a história, os valores e a equipe da ONNERGY Engenharia Elétrica, sediada em Porto Velho (RO) e atuante em toda a região.",
+    og_title: "Quem Somos | ONNERGY Engenharia Elétrica – Porto Velho, RO",
+    og_description:
+      "Conheça a história, os valores e a equipe da ONNERGY Engenharia Elétrica, sediada em Porto Velho (RO) e atuante em toda a região.",
+    og_image_url: null,
+    canonical_url: "https://onnergy.com.br/sobre",
+    updated_at: now,
+  },
+  {
+    id: "seed-seo-contato",
+    page: "contato",
+    title: "Contato | ONNERGY Engenharia Elétrica – Porto Velho, RO",
+    description:
+      "Fale com a ONNERGY Engenharia Elétrica de Porto Velho (RO) pelo WhatsApp, e-mail ou telefone. SOLICITE UM ORÇAMENTO.",
+    og_title: "Contato | ONNERGY Engenharia Elétrica – Porto Velho, RO",
+    og_description:
+      "Fale com a ONNERGY Engenharia Elétrica de Porto Velho (RO) pelo WhatsApp, e-mail ou telefone. SOLICITE UM ORÇAMENTO.",
+    og_image_url: null,
+    canonical_url: "https://onnergy.com.br/contato",
+    updated_at: now,
+  },
 ];
 
 export const seedPortfolioItems: PortfolioItem[] = [

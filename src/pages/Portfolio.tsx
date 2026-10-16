@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Video } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/layout/PageHero";
@@ -10,14 +10,37 @@ import { EmptyState } from "@/components/ui/EmptyState";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { usePortfolioCategories } from "@/hooks/usePortfolioCategories";
 import { usePortfolioItems } from "@/hooks/usePortfolioItems";
-import { useSeo } from "@/hooks/useSeo";
+import { useSeo, type StructuredDataItem } from "@/hooks/useSeo";
+import { useSeoSettings } from "@/hooks/useSeoSettings";
+import { buildBreadcrumbJsonLd, SITE_URL } from "@/lib/structuredData";
 import { cn } from "@/lib/utils";
 import type { PortfolioItem } from "@/types";
 
 export default function Portfolio() {
+  const { data: seo } = useSeoSettings("portfolio");
+
+  const structuredData = useMemo<StructuredDataItem[]>(
+    () => [
+      {
+        id: "breadcrumb",
+        data: buildBreadcrumbJsonLd([
+          { name: "Início", path: "/" },
+          { name: "Portfólio", path: "/portfolio" },
+        ]),
+      },
+    ],
+    [],
+  );
+
   useSeo({
-    title: "Portfólio | ONNERGY Engenharia Elétrica",
-    description: "Fotos e vídeos dos nossos projetos em energia solar, QGBT, subestações, automação e muito mais.",
+    title: seo?.title ?? "Portfólio | ONNERGY Engenharia Elétrica",
+    description:
+      seo?.description ??
+      "Fotos e vídeos dos nossos projetos em energia solar, QGBT, subestações, automação e muito mais.",
+    canonical: seo?.canonical_url ?? `${SITE_URL}/portfolio`,
+    ogTitle: seo?.og_title ?? undefined,
+    ogDescription: seo?.og_description ?? undefined,
+    structuredData,
   });
 
   const { categories, loading: loadingCategories, error: categoriesError } = usePortfolioCategories();

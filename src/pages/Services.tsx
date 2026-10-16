@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { MessageCircle } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/layout/PageHero";
@@ -9,17 +10,40 @@ import { ErrorState } from "@/components/ui/ErrorState";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { useServices } from "@/hooks/useServices";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { useSeo } from "@/hooks/useSeo";
+import { useSeo, type StructuredDataItem } from "@/hooks/useSeo";
+import { useSeoSettings } from "@/hooks/useSeoSettings";
+import { buildBreadcrumbJsonLd, buildServiceListJsonLd, SITE_URL } from "@/lib/structuredData";
 import { generateWhatsAppMessage, openWhatsApp } from "@/services/whatsappService";
 
 export default function Services() {
-  useSeo({
-    title: "Serviços Elétricos | ONNERGY Engenharia Elétrica",
-    description: "Instalações, manutenções, laudos, adequações e projetos elétricos completos.",
-  });
-
   const { services, loading, error } = useServices();
   const { siteSettings } = useSiteSettings();
+  const { data: seo } = useSeoSettings("servicos");
+
+  const structuredData = useMemo<StructuredDataItem[]>(() => {
+    const items: StructuredDataItem[] = [
+      {
+        id: "breadcrumb",
+        data: buildBreadcrumbJsonLd([
+          { name: "Início", path: "/" },
+          { name: "Serviços", path: "/servicos" },
+        ]),
+      },
+    ];
+    if (services.length > 0) {
+      items.push({ id: "service-list", data: buildServiceListJsonLd(services) });
+    }
+    return items;
+  }, [services]);
+
+  useSeo({
+    title: seo?.title ?? "Serviços Elétricos | ONNERGY Engenharia Elétrica",
+    description: seo?.description ?? "Instalações, manutenções, laudos, adequações e projetos elétricos completos.",
+    canonical: seo?.canonical_url ?? `${SITE_URL}/servicos`,
+    ogTitle: seo?.og_title ?? undefined,
+    ogDescription: seo?.og_description ?? undefined,
+    structuredData,
+  });
 
   function handleTalk(serviceName: string) {
     if (!siteSettings.whatsapp) return;
@@ -34,7 +58,7 @@ export default function Services() {
       <PageHero
         eyebrow="Serviços"
         title="Serviços elétricos para empresas e residências"
-        description="Instalações, manutenções, laudos técnicos, adequações normativas e muito mais — com responsabilidade técnica em cada etapa."
+        description="Instalações, manutenções, laudos técnicos, adequações normativas e muito mais em Porto Velho e Rondônia — com responsabilidade técnica em cada etapa."
       />
 
       <section className="py-16">

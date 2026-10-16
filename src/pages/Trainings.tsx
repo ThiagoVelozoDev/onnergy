@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Clock, MapPin, MessageCircle, Users2 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/layout/PageHero";
@@ -9,17 +10,37 @@ import { ErrorState } from "@/components/ui/ErrorState";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { useTrainings } from "@/hooks/useTrainings";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { useSeo } from "@/hooks/useSeo";
+import { useSeo, type StructuredDataItem } from "@/hooks/useSeo";
+import { useSeoSettings } from "@/hooks/useSeoSettings";
+import { buildBreadcrumbJsonLd, SITE_URL } from "@/lib/structuredData";
 import { generateWhatsAppMessage, openWhatsApp } from "@/services/whatsappService";
 
 export default function Trainings() {
-  useSeo({
-    title: "Treinamentos | ONNERGY Engenharia Elétrica",
-    description: "Treinamentos in company e abertos para equipes que buscam alta performance.",
-  });
-
   const { trainings, loading, error } = useTrainings();
   const { siteSettings } = useSiteSettings();
+  const { data: seo } = useSeoSettings("treinamentos");
+
+  const structuredData = useMemo<StructuredDataItem[]>(
+    () => [
+      {
+        id: "breadcrumb",
+        data: buildBreadcrumbJsonLd([
+          { name: "Início", path: "/" },
+          { name: "Treinamentos", path: "/treinamentos" },
+        ]),
+      },
+    ],
+    [],
+  );
+
+  useSeo({
+    title: seo?.title ?? "Treinamentos | ONNERGY Engenharia Elétrica",
+    description: seo?.description ?? "Treinamentos in company e abertos para equipes que buscam alta performance.",
+    canonical: seo?.canonical_url ?? `${SITE_URL}/treinamentos`,
+    ogTitle: seo?.og_title ?? undefined,
+    ogDescription: seo?.og_description ?? undefined,
+    structuredData,
+  });
 
   function handleTalk(trainingName: string) {
     if (!siteSettings.whatsapp) return;

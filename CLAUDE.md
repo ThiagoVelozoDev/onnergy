@@ -49,6 +49,7 @@ Para mudanças visuais/UI, suba `npm run dev` e confira no navegador (o skill `r
 | [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md) | cores, tipografia, componentes de UI, ícones |
 | [docs/DATABASE.md](docs/DATABASE.md) | tabelas, RLS, migrations |
 | [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) | receita para adicionar uma nova entidade de conteúdo |
+| [docs/SEO.md](docs/SEO.md) | meta tags, dados estruturados, analytics condicional, checklist de SEO local |
 | [CHANGELOG.md](CHANGELOG.md) | o que mudou e quando |
 
 Ao adicionar um `.md` novo, sempre linkar daqui e do README — documentação órfã não ajuda ninguém.

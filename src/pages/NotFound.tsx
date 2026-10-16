@@ -3,7 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { useSeo } from "@/hooks/useSeo";
 
 export default function NotFound() {
-  useSeo({ title: "Página não encontrada | ONNERGY" });
+  useSeo({ title: "Página não encontrada | ONNERGY", noindex: true });
 
   return (
     <Container className="flex flex-col items-center justify-center gap-4 py-32 text-center">

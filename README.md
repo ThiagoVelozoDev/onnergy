@@ -75,6 +75,7 @@ Schema, políticas de RLS e bucket de Storage documentados em [docs/DATABASE.md]
 - [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md) — cores, tipografia, componentes, ícones
 - [docs/DATABASE.md](docs/DATABASE.md) — tabelas, RLS, Storage
 - [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) — como adicionar uma nova entidade de conteúdo ponta a ponta
+- [docs/SEO.md](docs/SEO.md) — arquitetura de SEO (meta tags, JSON-LD, analytics) e checklist do que fazer fora do código
 - [CLAUDE.md](CLAUDE.md) — guia rápido para assistentes de IA trabalhando neste repositório
 - [CHANGELOG.md](CHANGELOG.md) — histórico de mudanças relevantes
 - [docs/PROMPT MASTER — ONNERGY ENGENHARIA ELÉTRICA.md](<docs/PROMPT MASTER — ONNERGY ENGENHARIA ELÉTRICA.md>) — brief original do projeto (histórico; algumas decisões, como a paleta de cores, foram substituídas — ver nota no topo do arquivo)

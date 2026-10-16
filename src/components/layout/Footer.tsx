@@ -85,7 +85,11 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-orange" aria-hidden="true" />
-              {siteSettings.address}
+              <span>
+                {siteSettings.address}
+                <br />
+                <span className="text-white/40">Atendemos Porto Velho e toda Rondônia.</span>
+              </span>
             </li>
             <li className="flex items-start gap-2">
               <Clock className="mt-0.5 h-4 w-4 shrink-0 text-orange" aria-hidden="true" />
